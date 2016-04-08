@@ -14,6 +14,8 @@ set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4
 set autoindent
 set cindent
 
+let mapleader=","
+
 " Ctrl+n to toggle NerdTree
 map <C-n> :NERDTreeToggle<CR>
 
