@@ -1,6 +1,7 @@
 set nocompatible
 syntax on
 execute pathogen#infect()
+let g:airline_theme='powerlineish'
 
 " Get rid of crappy ~ files
 set nobackup
