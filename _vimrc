@@ -36,3 +36,6 @@ let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/]\.(git|hg|svn)$', 
 	\ 'file': '\v\.(exe|so|dll|lib|idb|obj|sdf)$' 
 	\ }
+
+autocmd QuickFixCmdPost [^l]* nested copen
+autocmd QuickFixCmdPost    l* nested lwindow
