@@ -18,7 +18,7 @@ set noeb vb t_vb= " Disable all the noises
 set number
 set backspace=2
 set backspace=indent,eol,start
-set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4
+set tabstop=4 shiftwidth=4 expandtab
 
 set pastetoggle=<F2>
 
@@ -27,11 +27,11 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Alt-n to toggle relative numbering
 function! NumberToggle()
-	if(&relativenumber == 1)
-		set nornu
-	else
-		set rnu
-	endif
+    if(&relativenumber == 1)
+        set nornu
+    else
+        set rnu
+    endif
 endfunc
 
 nnoremap <A-n> :call NumberToggle()<CR>
@@ -39,9 +39,9 @@ nnoremap <A-n> :call NumberToggle()<CR>
 " Ignore crap for Ctrl-P
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.lib,*.pdb,*.dll
 let g:ctrlp_custom_ignore = {
-			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-			\ 'file': '\v\.(exe|so|dll|lib|idb|obj|sdf)$'
-			\ }
+        \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+        \ 'file': '\v\.(exe|so|dll|lib|idb|obj|sdf)$'
+        \ }
 
 autocmd QuickFixCmdPost [^l]* nested copen
 autocmd QuickFixCmdPost    l* nested lwindow
