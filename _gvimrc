@@ -1,5 +1,5 @@
 colorscheme solarized
-set guifont=Consolas:h11:cDEFAULT
+set guifont=Consolas:h10:cDEFAULT
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
