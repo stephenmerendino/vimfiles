@@ -24,6 +24,7 @@ set pastetoggle=<F2>
 
 " Ctrl+n to toggle NerdTree
 map <C-n> :NERDTreeToggle<CR>
+map <F3> :retab<CR>
 
 " Alt-n to toggle relative numbering
 function! NumberToggle()
