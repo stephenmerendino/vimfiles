@@ -3,5 +3,6 @@ set guifont=Consolas:h10:cDEFAULT
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
+set vb t_vb=
 set lines=30
 set columns=100
