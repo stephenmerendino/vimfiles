@@ -1,0 +1,7 @@
+colorscheme solarized
+set guifont=Consolas:h11:cDEFAULT
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set lines=30
+set columns=100
