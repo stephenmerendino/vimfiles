@@ -8,25 +8,25 @@ let mapleader=","
 colorscheme solarized
 let g:airline_theme='powerlineish'
 set laststatus=2 " Always show airline
+set directory=.,$TEMP
 
 " Get rid of crappy ~ files
 set nobackup
 set nowritebackup
 
-set noeb vb t_vb= " Disable all the noises
+" Disable all the noises
+set noeb vb t_vb=
 
 set number
 set backspace=2
 set backspace=indent,eol,start
 set tabstop=4 shiftwidth=4 expandtab
+set cindent autoindent
 
-set pastetoggle=<F2>
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <F3> :retab<CR>
 
-" Ctrl+n to toggle NerdTree
-map <C-n> :NERDTreeToggle<CR>
-map <F3> :retab<CR>
-
-" Alt-n to toggle relative numbering
+nnoremap <A-n> :call NumberToggle()<CR>
 function! NumberToggle()
     if(&relativenumber == 1)
         set nornu
@@ -35,17 +35,44 @@ function! NumberToggle()
     endif
 endfunc
 
-nnoremap <A-n> :call NumberToggle()<CR>
+nnoremap <F2> :call PasteToggle()<CR>
+function! PasteToggle()
+    if(&paste == 1)
+        set nopaste
+    else
+        set paste
+    endif
+endfunc
 
-" Ignore crap for Ctrl-P
+" Thanks to https://forums.handmadehero.org/index.php/forum?view=topic&catid=4&id=704#3982
+" error message formats
+" Microsoft MSBuild
+set errorformat+=\\\ %#%f(%l\\\,%c):\ %m
+" Microsoft compiler: cl.exe
+set errorformat+=\\\ %#%f(%l)\ :\ %#%t%[A-z]%#\ %m
+" Microsoft HLSL compiler: fxc.exe
+set errorformat+=\\\ %#%f(%l\\\,%c-%*[0-9]):\ %#%t%[A-z]%#\ %m
+
+nnoremap <F7> :call SimpleCBuild()<CR>
+function! SimpleCBuild()
+    let &makeprg="build"
+    silent make
+    copen
+    echo "Build Complete"
+endfunc
+
+nnoremap <F6> :cn<CR>
+nnoremap <F5> :cp<CR>
+
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.lib,*.pdb,*.dll
+let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
 let g:ctrlp_custom_ignore = {
         \ 'dir':  '\v[\/]\.(git|hg|svn)$',
         \ 'file': '\v\.(exe|so|dll|lib|idb|obj|sdf)$'
         \ }
 
-autocmd QuickFixCmdPost [^l]* nested copen
-autocmd QuickFixCmdPost    l* nested lwindow
-autocmd BufWritePre * :%s/\s\+$//e " Remove all trailing whitespace on every save
+" Remove all trailing whitespace on every save
+autocmd BufWritePre * :%s/\s\+$//e
 
+" Quick edit my vimrc
 map <leader>vimrc :e $USERPROFILE\vimfiles\_vimrc<cr>
