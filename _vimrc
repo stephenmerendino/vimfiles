@@ -22,6 +22,7 @@ set backspace=2
 set backspace=indent,eol,start
 set tabstop=4 shiftwidth=4 expandtab
 set cindent autoindent
+set relativenumber
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <F3> :retab<CR>
@@ -76,3 +77,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Quick edit my vimrc
 map <leader>vimrc :e $USERPROFILE\vimfiles\_vimrc<cr>
+
+" Move lines up and down easy
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
