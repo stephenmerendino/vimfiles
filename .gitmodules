@@ -25,3 +25,6 @@
 [submodule "bundle/ag.vim"]
 	path = bundle/ag.vim
 	url = https://github.com/rking/ag.vim
+[submodule "bundle/incsearch.vim"]
+	path = bundle/incsearch.vim
+	url = https://github.com/haya14busa/incsearch.vim
